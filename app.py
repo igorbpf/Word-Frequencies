@@ -55,8 +55,7 @@ def index():
                     url=url,
                     result_all=raw_word_count,
                     result_no_stop_words=no_stop_words_count
-                    )[:10]
-                print result
+                    )
                 db.session.add(result)
                 db.session.commit()
 
