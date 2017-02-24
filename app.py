@@ -33,7 +33,10 @@ def index():
 
         if r:
             # text processing
-            raw = BeautifulSoup(r.text, 'html.parser').get_text()
+            raw = BeautifulSoup(r.text, 'html.parser')
+            for script in raw(['script','style']):
+                script.extract()
+            raw = raw.get_text()
             nltk.data.path.append('./nltk_data/') # set the path
             tokens = nltk.word_tokenize(raw)
             text = nltk.Text(tokens)
